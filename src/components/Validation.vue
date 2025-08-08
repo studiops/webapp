@@ -6,15 +6,24 @@
 import { appStore } from '@/stores/store'
 
 const handleSubmit = async () => {
+  // Nettoyage des IOC : séparation par lignes ou espaces
+  const iocList = appStore.iocData
+    .split(/[\n\s]+/)            // coupe par saut de ligne ou espaces multiples
+    .map(ioc => ioc.trim())      // enlève les espaces autour
+    .filter(ioc => ioc.length);  // enlève les vides
+
+const iocTypeName = appStore.selectedIocType === 'IP' ? 'IP' : 'ALN';
+
   const payload = {
     workflow: appStore.selectedWorkflow,
     client: appStore.selectedClient,
     iocType: appStore.selectedIocType,
-    iocData: appStore.iocData
+    iocTypeName: iocTypeName,
+    iocData: iocList              // On envoie maintenant un tableau
   }
 
   try {
-    const response = await fetch('http://10.102.22.5:5678/webhook-test/select', {
+    const response = await fetch('http://10.102.22.5:5678/webhook/select', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -44,5 +53,8 @@ button {
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
+  margin-top: 20px;
+  margin: 20px auto 0;
+  display: block;
 }
 </style>

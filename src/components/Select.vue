@@ -22,5 +22,7 @@ import { appStore } from '@/stores/store'
   gap: 10px;
   max-width: 300px;
 }
-
+select {
+    width: 250px
+}
 </style>

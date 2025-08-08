@@ -5,10 +5,10 @@
 
     <Select></Select>
     
-    <Client v-if="store.selectedWorkflow === 'IOC' || store.selectedWorkflow === 'Investigation'" />
+    <Client v-show="store.selectedWorkflow === 'IOC' || store.selectedWorkflow === 'Investigation'" />
 
-    <Ioc v-if="store.selectedWorkflow === 'IOC' && store.selectedClient !== ''" />
-    <IocData v-if="store.selectedWorkflow === 'IOC' && store.selectedClient !== '' && store.selectedIocType !== ''" />
+    <Ioc v-show="store.selectedWorkflow === 'IOC' && store.selectedClient !== ''" />
+    <IocData v-show="store.selectedWorkflow === 'IOC' && store.selectedClient !== '' && store.selectedIocType !== ''" />
     
     <Validation v-if="canValidate" />
   </div>
@@ -41,3 +41,20 @@ const canValidate = computed(() => {
   return false
 })
 </script>
+
+<style scoped>
+
+#app {
+  max-width: 500px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0,.1);
+}
+</style>

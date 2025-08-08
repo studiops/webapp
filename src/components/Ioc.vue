@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-import { appStore } from '@/stores/store'
 
+import { appStore } from '@/stores/store'
 
 </script>
 
@@ -24,5 +24,6 @@ import { appStore } from '@/stores/store'
   flex-direction: column;
   gap: 10px;
   max-width: 300px;
+  width: 250px;
 }
 </style>

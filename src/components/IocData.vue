@@ -1,12 +1,12 @@
 <template>
   <div class="ioc-data">
     <label for="ioc-data-input">Entrez les données IOC :</label>
-    <input
+    <textarea
       id="ioc-data-input"
-      type="text"
       v-model="appStore.iocData"
-      placeholder="Saisissez ici les données IOC"
-    />
+      placeholder="Saisissez ici les données IOC (une par ligne)"
+      rows="5"
+    ></textarea>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import { appStore } from '@/stores/store'
   flex-direction: column;
   max-width: 400px;
   margin-top: 10px;
+  width: 250px;
 }
 
 label {
@@ -27,10 +28,11 @@ label {
   font-weight: bold;
 }
 
-input[type="text"] {
+textarea {
   padding: 8px;
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
+  resize: vertival;
 }
 </style>
