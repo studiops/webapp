@@ -23,7 +23,7 @@ const iocTypeName = appStore.selectedIocType === 'IP' ? 'IP' : 'ALN';
   }
 
   try {
-    const response = await fetch('http://10.102.22.5:5678/webhook/select', {
+    const response = await fetch('http://x.x.x.x:5678/webhook/select', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
